@@ -102,3 +102,6 @@ cat > /etc/bash_completion.d/kubectl << __EOF__
 source <(kubectl completion bash)
 __EOF__
 
+
+#para singlenode
+kubectl taint nodes --all node-role.kubernetes.io/master-
