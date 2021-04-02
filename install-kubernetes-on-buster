@@ -79,3 +79,26 @@ kubectl get secret -n kubernetes-dashboard \
 | grep kubernetes-dashboard-token- \
 | awk '{print $1}' \
 | xargs kubectl describe secret -n kubernetes-dashboard;
+
+
+
+
+kubectl completion bash
+
+type _init_completion
+apt-get install bash-completion
+source /usr/share/bash-completion/bash_completion
+
+echo 'source <(kubectl completion bash)' >>~/.bashrc
+
+kubectl completion bash >/etc/bash_completion.d/kubectl
+
+cat >> $HOME/.bash_profile << __EOF__
+source <(kubectl completion bash)
+__EOF__
+
+
+cat > /etc/bash_completion.d/kubectl << __EOF__
+source <(kubectl completion bash)
+__EOF__
+
